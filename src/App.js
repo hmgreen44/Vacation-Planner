@@ -1,5 +1,6 @@
 import './App.css';
 import LandingPage from './components/LandingPage'
+import RegisterPage from './components/RegisterPage'
 import { useState, useEffect } from 'react'
 import {
   BrowserRouter as Router,
@@ -17,6 +18,9 @@ export default function App() {
             <LandingPage />
           </Route>
         </Switch>
+        <Route path="/registration/">
+          <RegisterPage />
+        </Route>
       </Router>
     </div>
   );
