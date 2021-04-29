@@ -1,3 +1,20 @@
 .App{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-image: url('./img/mountains.jpeg');
+    background-size: cover;
+    min-width: 100%;
+    min-height: 100%;
+    position: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+
     }
+.accountHeader {
+color: purple;
+
+}
+
+.Herotext{
+
+
+}
