@@ -1,20 +1,27 @@
-.App{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-image: url('./img/mountains.jpeg');
+.landingPage{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-image: url('./img/Mountains.jpg');
     background-size: cover;
     min-width: 100%;
     min-height: 100%;
     position: fixed;
     background-repeat: no-repeat;
     background-position: center;
-
-    }
-.accountHeader {
-color: purple;
-
+    
+}
+.heroText{
+    color:#2A0A5B;
+    
 }
 
-.Herotext{
-
-
+.registerPage{
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        background-image: url('./img/Mountains.jpg');
+        background-size: cover;
+        min-width: 100%;
+        min-height: 100%;
+        position: fixed;
+        background-repeat: no-repeat;
+        background-position: center;
+        color: white;
 }

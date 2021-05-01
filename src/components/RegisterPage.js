@@ -27,25 +27,37 @@ export default function RegisterPage(props) {
     }
 
     return (
-        <div className="row text-center mb-4 mt-5">
-            <div className="accountHeader col-md-12 col-sm-12">
-                <h2>Create A New Account</h2>
-                <form onSubmit={register}>
-                    <div class="mb-3">
-                        <label htmlFor="exampleInputName" className="form-label">Name</label>
-                        <input name="name" value={registrationData.name || ''} type="text" className="form-control" id="exampleInputName" onChange={handleChange} />
+        <div className="registerPage container fluid">
+            <div className="row position-relative justify-content-center text-center mt-5 pt-4">
+                <div className="col-md-6 position-absolute top-50 start-50 translate-middle text-center mt-5">
+                    <div className="trans card p-5">
+                        <div className="heroText">
+                            <h2>Create A New Account</h2>
+                            <form onSubmit={register}>
+                                <div className="input-group mt-3 mb-3">
+                                    <input name="name" value={registrationData.name || ''} type="text" className="form-control" placeholder="Name" id="exampleInputName" onChange={handleChange} />
+                                </div>
+                                <div className="input-group mt-3 mb-3">
+                                    <input name="email" type="text" value={registrationData.email || ''} className="form-control" placeholder="Email" id="exampleInputEmail" onChange={handleChange} />
+                                </div>
+                                <div className="input-group mt-3 mb-3">
+                                    <input name="password" type="password" value={registrationData.password || ''} className="form-control" placeholder="Password" id="exampleInputPassword"onChange={handleChange} />
+                                </div>
+                                <div id="passwordHelp" className="form-text">Password must be between 8-20 characters.</div>
+                                <div className="row text-center mt-3">
+                                    <div className="col">
+                                    <Link to="/MainPage/">
+                                    <button type="submit" className="btn btn-primary mb-3">Submit</button></Link>
+                                        <p>Already have an account?</p>
+                                        <Link to="/">
+                                            Login Here</Link>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
                     </div>
-                    <div className="mb-3">
-                        <label htmlFor="exampleInputEmail" className="form-label">Email address</label>
-                        <input name="email" value={registrationData.email || ''} type="email" className="form-control" id="exampleInputEmail" aria-describedby="emailHelp" onChange={handleChange}/>
-                        <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="exampleInputPassword" className="form-label">Password</label>
-                        <input name="password" value={registrationData.password || ''} type="password" className="form-control" id="exampleInputPassword" onChange={handleChange}/>
-                    </div>
-                    <button type="submit" className="btn btn-primary">Submit</button>
-                </form>
+                </div>
             </div>
         </div>
     )
