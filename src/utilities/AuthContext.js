@@ -16,10 +16,37 @@ export const AuthHelper = () => {
     }, [])
 
     function saveToken(res) {
-        const APItoken = res.data.data.token;
-        setToken(APItoken)
+        console.log(res) // Check response
+        let APItoken; // Initalize variable
+        if (res.config.url === "https://vacation_planner-hmgreen44956074.codeanyapp.com/api/register") {
+            APItoken = res.data.data.token
+        } else if (res.config.url === "https://vacation_planner-hmgreen44956074.codeanyapp.com/oauth/token") {
+            APItoken = res.data.access_token
+        }
+        // const APItoken = res.data.data.token || res.data.access_token;
+        setToken(APItoken);
         window.localStorage.setItem('token', APItoken)
+    }
 
+    function destroyToken() {
+        setToken('')
+        window.localStorage.removeItem('token')
+
+    }
+    function login(loginData) {
+
+        axiosHelper({
+            data: {
+                
+                grant_type: "password",
+                client_id: "2",
+                client_secret: "lMUeM1hF41PoHrZJ4JxpDsOG7im4Y62qM0XajwvR",
+                ...loginData
+            },
+            method: 'post',
+            url: '/oauth/token',
+            successMethod: saveToken
+        })
     }
 
     function register(data) {
@@ -29,11 +56,12 @@ export const AuthHelper = () => {
             method: 'post',
             url: '/api/register',
             successMethod: saveToken
+
         })
 
     }
 
-    return { token, register }
+    return { token, register, login }
 
 }
 

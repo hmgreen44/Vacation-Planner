@@ -11,7 +11,7 @@ export function axiosHelper(props) {
     } = props;
 
     const API_URL = 'https://vacation_planner-hmgreen44956074.codeanyapp.com'
-
+    console.log(data)
     return axios({
         method,
         url: API_URL + url,
