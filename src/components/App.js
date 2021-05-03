@@ -1,6 +1,7 @@
 import './App.css';
-import LandingPage from './components/LandingPage'
-import RegisterPage from './components/RegisterPage'
+import LandingPage from '../pages/LandingPage'
+import RegisterPage from '../pages/RegisterPage'
+import { AuthProvider } from '../utilities/AuthContext'
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,6 +13,7 @@ export default function App() {
 
   return (
     <div className="App">
+    <AuthProvider>
       <Router>
         <Switch>
           <Route exact={true} path="/">
@@ -22,6 +24,7 @@ export default function App() {
           <RegisterPage />
         </Route>
       </Router>
+    </AuthProvider>
     </div>
   );
 }
