@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom"
 import { useAuth } from '../utilities/AuthContext'
+import useForm from '../utilities/useForm'
+import validate from '../utilities/FormValidationRules'
 
 export default function RegisterPage() {
     const { register } = useAuth()
@@ -10,6 +12,10 @@ export default function RegisterPage() {
         e.preventDefault()
         register(registrationData)
     }
+    const {
+        formInfo,
+        errors,
+    } = useForm(register, validate);
 
     return (
         <div className="registerPage container fluid">
@@ -18,23 +24,43 @@ export default function RegisterPage() {
                     <div className="trans card p-5">
                         <div className="heroText">
                             <h2>Create A New Account</h2>
-                            <form onSubmit={handleSubmit}>
+                            <form onSubmit={handleSubmit} className="needs-validation" noValidate>
                                 <div className="input-group mt-3 mb-3">
-                                    <input name="name" value={registrationData.name || ''} type="text" className="form-control" placeholder="Name" id="exampleInputName" onChange={handleChange} />
+                                    <input
+                                        className={`form-control ${errors.name && 'is-invalid'}`}
+                                        name="name"
+                                        value={registrationData.name || ''}
+                                        type="text"
+                                        placeholder="Name"
+                                        id="exampleInputName"
+                                        onChange={handleChange} required />
                                 </div>
                                 <div className="input-group mt-3 mb-3">
-                                    <input name="email" type="text" value={registrationData.email || ''} className="form-control" placeholder="Email" id="exampleInputEmail" onChange={handleChange} />
+                                    <input
+                                        className={`form-control ${errors.name && 'is-invalid'}`}
+                                        name="email"
+                                        type="text" value={registrationData.email || ''}
+                                        placeholder="Email"
+                                        id="exampleInputEmail"
+                                        onChange={handleChange} required />
                                 </div>
                                 <div className="input-group mt-3 mb-3">
-                                    <input name="password" type="password" value={registrationData.password || ''} className="form-control" placeholder="Password" id="exampleInputPassword" onChange={handleChange} />
+                                    <input
+                                        className={`form-control ${errors.password && 'is-invalid'}`}
+                                        name="password"
+                                        placeholder="Password"
+                                        type="password"
+                                        value={registrationData.password || ''}
+                                        id="exampleInputPassword"
+                                        onChange={handleChange} required />
                                 </div>
                                 <div id="passwordHelp" className="form-text">Password must be between 8-20 characters.</div>
                                 <div className="row text-center mt-3">
                                     <div className="col">
-                                        <button type="submit" className="btn btn-primary mb-3">Submit</button>
+                                        <button type="submit" className="btn is-block is-info is-fullwidth btn-primary mb-3">Submit</button>
                                         <p>Already have an account?</p>
                                         <Link to="/">
-                                            Login Here</Link>
+                                         Login Here</Link>
                                     </div>
                                 </div>
                             </form>

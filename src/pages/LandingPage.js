@@ -18,7 +18,7 @@ export default function LandingPage(props) {
                                 <div className="input-group mb-3">
                                     <input type="text" className="form-control" placeholder="Password" aria-label="Password" />
                                 </div>
-                                <Link to="/MainPage/">
+                                <Link to="/home/">
                                     Login</Link>
                                 <div className="row text-center mt-3">
                                     <div className="col">
