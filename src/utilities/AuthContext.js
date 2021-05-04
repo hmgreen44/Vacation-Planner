@@ -33,6 +33,7 @@ export const AuthHelper = () => {
     function destroyToken() {
         setToken('')
         window.localStorage.removeItem('token')
+        history.replace('/')
 
     }
     function login(loginData) {
@@ -42,12 +43,21 @@ export const AuthHelper = () => {
                 
                 grant_type: "password",
                 client_id: "2",
-                client_secret: "lMUeM1hF41PoHrZJ4JxpDsOG7im4Y62qM0XajwvR",
+                client_secret: "n1Iu64HSyYj6oEHuUcudhTVcCF4O4cJ8h5c9u3lA",
                 ...loginData
             },
             method: 'post',
             url: '/oauth/token',
             successMethod: saveToken
+        })
+    }
+
+    function logout() {
+        axiosHelper({
+            url: '/api/logout',
+            successMethod: destroyToken,
+            token
+
         })
     }
 
@@ -63,7 +73,7 @@ export const AuthHelper = () => {
 
     }
 
-    return { token, register, login }
+    return { token, register, login, logout }
 
 }
 
