@@ -1,22 +1,22 @@
 import './App.css';
+import { Router } from 'react-router';
 import LandingPage from '../pages/LandingPage'
 import RegisterPage from '../pages/RegisterPage'
 import CreateTripPage from '../pages/CreateTripPage'
 import HomePage from '../pages/HomePage'
 import { AuthProvider } from '../utilities/AuthContext'
+import history from "../utilities/history";
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
 } from 'react-router-dom'
-
 export default function App() {
 
 
   return (
     <div className="App">
       <AuthProvider>
-        <Router>
+        <Router history={history}>
           <Switch>
             <Route exact={true} path="/">
               <LandingPage />

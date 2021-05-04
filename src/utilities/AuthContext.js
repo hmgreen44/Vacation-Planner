@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import { axiosHelper } from './axiosHelper'
+import history from "./history";
 const AuthContext = createContext({});
 
 export const AuthHelper = () => {
@@ -26,6 +27,7 @@ export const AuthHelper = () => {
         // const APItoken = res.data.data.token || res.data.access_token;
         setToken(APItoken);
         window.localStorage.setItem('token', APItoken)
+        history.replace('/home')
     }
 
     function destroyToken() {

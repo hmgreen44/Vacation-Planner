@@ -9,8 +9,7 @@ export default function CreateTripPage() {
                         <div className="heroText text-center mb-4 mt-5">
                             <div className="trans card p-5">
                                 <div className="heroText">
-                                    <h1>Create a New Trip</h1>
-                                    
+                                    <h1>Create a New Trip</h1>                                   
                                         </div>
                                     </div>
                                 </div>

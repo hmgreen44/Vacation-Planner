@@ -12,10 +12,15 @@ export default function RegisterPage() {
         e.preventDefault()
         register(registrationData)
     }
+
+    const Form = e => {
+        register(formInfo)
+    }
     const {
         formInfo,
         errors,
-    } = useForm(register, validate);
+    } = useForm(Form, validate);
+
 
     return (
         <div className="registerPage container fluid">
@@ -27,19 +32,22 @@ export default function RegisterPage() {
                             <form onSubmit={handleSubmit} className="needs-validation" noValidate>
                                 <div className="input-group mt-3 mb-3">
                                     <input
-                                        className={`form-control ${errors.name && 'is-invalid'}`}
+                                        className={`form-control ${errors.name}`}
                                         name="name"
                                         value={registrationData.name || ''}
                                         type="text"
                                         placeholder="Name"
                                         id="exampleInputName"
                                         onChange={handleChange} required />
+                                    <div className="valid-feedback">
+                                        Looks good!
+                                        </div>
                                 </div>
                                 <div className="input-group mt-3 mb-3">
                                     <input
-                                        className={`form-control ${errors.name && 'is-invalid'}`}
+                                        className={`form-control ${errors.email && 'is-danger'}`}
                                         name="email"
-                                        type="text" 
+                                        type="text"
                                         value={registrationData.email || ''}
                                         placeholder="Email"
                                         id="exampleInputEmail"
@@ -47,7 +55,7 @@ export default function RegisterPage() {
                                 </div>
                                 <div className="input-group mt-3 mb-3">
                                     <input
-                                        className={`form-control ${errors.password && 'is-invalid'}`}
+                                        className={`form-control ${errors.password}`}
                                         name="password"
                                         placeholder="Password"
                                         type="password"
@@ -61,7 +69,7 @@ export default function RegisterPage() {
                                         <button type="submit" className="btn btn-primary mb-3">Submit</button>
                                         <p>Already have an account?</p>
                                         <Link to="/">
-                                         Login Here</Link>
+                                            Login Here</Link>
                                     </div>
                                 </div>
                             </form>

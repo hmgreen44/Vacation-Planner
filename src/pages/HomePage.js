@@ -5,7 +5,7 @@ export default function HomePage() {
     return (
         <div>
             <div className="homePage container fluid text-center">
-                <div className="row position-relative justify-content-center text-center mt-5 pt-4">
+                <div className="row text-center pt-4">
                     <div className="col-md-12 text-center">
                         <div className="heroText text-center mb-4 mt-5">
                             <div className="trans card p-5">
