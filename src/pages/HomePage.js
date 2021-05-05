@@ -7,29 +7,15 @@ import { useAuth } from '../utilities/AuthContext'
 export default function HomePage() {
     const { logout } = useAuth()
 
-
+    //Welcome Back User
     return (
-        <div>
-            <div className="homePage container fluid text-center">
-                <div className="row text-center mt-4 pt-4">
-                    <h1>Welcome Back User</h1>
-                    <div className="col-md-12 text-center">
-                        <button onClick={logout} className="btn btn-dark mx-4 mt-3 position-absolute top-0 end-0">Logout</button>
-                        <div className="heroText text-center mb-4 mt-5">
-                            <div className="trans card p-5">
-                                <div className="heroText">
-                                    <p>View Your Current Trips</p>
-                                    <p>Oops! Looks like you don't have any trips planned.</p>
-                                    <Link to="/create/">
-                                        Create One Now!</Link>
+        <>    
+                    <p>View Your Current Trips</p>
+                    <p>Oops! Looks like you don't have any trips planned.</p>
+                    <Link to="/create">
+                        Create One Now!</Link>          
+        </>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
     )
 }

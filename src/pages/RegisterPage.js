@@ -23,61 +23,53 @@ export default function RegisterPage() {
 
 
     return (
-        <div className="registerPage container fluid">
-            <div className="row position-relative justify-content-center text-center mt-5 pt-4">
-                <div className="col-md-8 text-center mt-5">
-                    <div className="trans card p-5">
-                        <div className="heroText">
-                            <h2>Create A New Account</h2>
-                            <form onSubmit={handleSubmit} className="needs-validation" noValidate>
-                                <div className="input-group mt-3 mb-3">
-                                    <input
-                                        className={`form-control ${errors.name}`}
-                                        name="name"
-                                        value={registrationData.name || ''}
-                                        type="text"
-                                        placeholder="Name"
-                                        id="exampleInputName"
-                                        onChange={handleChange} required />
-                                    <div className="valid-feedback">
-                                        Looks good!
+        <>
+            <h2>Create A New Account</h2>
+            <form onSubmit={handleSubmit} className="needs-validation" noValidate>
+                <div className="input-group mt-3 mb-3">
+                    <input
+                        className={`form-control ${errors.name}`}
+                        name="name"
+                        value={registrationData.name || ''}
+                        type="text"
+                        placeholder="Name"
+                        id="exampleInputName"
+                        onChange={handleChange} required />
+                    <div className="valid-feedback">
+                        Looks good!
                                         </div>
-                                </div>
-                                <div className="input-group mt-3 mb-3">
-                                    <input
-                                        className={`form-control ${errors.email && 'is-danger'}`}
-                                        name="email"
-                                        type="text"
-                                        value={registrationData.email || ''}
-                                        placeholder="Email"
-                                        id="exampleInputEmail"
-                                        onChange={handleChange} required />
-                                </div>
-                                <div className="input-group mt-3 mb-3">
-                                    <input
-                                        className={`form-control ${errors.password}`}
-                                        name="password"
-                                        placeholder="Password"
-                                        type="password"
-                                        value={registrationData.password || ''}
-                                        id="exampleInputPassword"
-                                        onChange={handleChange} required />
-                                </div>
-                                <div id="passwordHelp" className="form-text">Password must be between 8-20 characters.</div>
-                                <div className="row text-center mt-3">
-                                    <div className="col">
-                                        <button type="submit" className="btn btn-primary mb-3">Submit</button>
-                                        <p>Already have an account?</p>
-                                        <Link to="/">
-                                            Login Here</Link>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                </div>
+                <div className="input-group mt-3 mb-3">
+                    <input
+                        className={`form-control ${errors.email && 'is-danger'}`}
+                        name="email"
+                        type="text"
+                        value={registrationData.email || ''}
+                        placeholder="Email"
+                        id="exampleInputEmail"
+                        onChange={handleChange} required />
+                </div>
+                <div className="input-group mt-3 mb-3">
+                    <input
+                        className={`form-control ${errors.password}`}
+                        name="password"
+                        placeholder="Password"
+                        type="password"
+                        value={registrationData.password || ''}
+                        id="exampleInputPassword"
+                        onChange={handleChange} required />
+                </div>
+                <div id="passwordHelp" className="form-text">Password must be between 8-20 characters.</div>
+                <div className="row text-center mt-3">
+                    <div className="col">
+                        <button type="submit" className="btn btn-primary mb-3">Submit</button>
+                        <p>Already have an account?</p>
+                        <Link to="/">
+                            Login Here</Link>
                     </div>
                 </div>
-            </div>
-        </div>
+            </form>
+        </>
     )
 
 }

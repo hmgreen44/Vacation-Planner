@@ -43,7 +43,7 @@ export const AuthHelper = () => {
                 
                 grant_type: "password",
                 client_id: "2",
-                client_secret: "n1Iu64HSyYj6oEHuUcudhTVcCF4O4cJ8h5c9u3lA",
+                client_secret: "oHxTQupRhKhV4f3SPoer5QtIPFOcLdZn5gwXDBc8",
                 ...loginData
             },
             method: 'post',
@@ -72,6 +72,7 @@ export const AuthHelper = () => {
         })
 
     }
+
 
     return { token, register, login, logout }
 
