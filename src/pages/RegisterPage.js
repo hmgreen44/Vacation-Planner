@@ -62,7 +62,7 @@ export default function RegisterPage() {
                 <div id="passwordHelp" className="form-text">Password must be between 8-20 characters.</div>
                 <div className="row text-center mt-3">
                     <div className="col">
-                        <button type="submit" className="btn btn-primary mb-3">Submit</button>
+                        <button type="submit" className="btn btn-outline-primary mb-3">Submit</button>
                         <p>Already have an account?</p>
                         <Link to="/">
                             Login Here</Link>

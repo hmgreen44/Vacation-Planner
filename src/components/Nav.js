@@ -12,15 +12,15 @@ function Nav() {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ms-auto">
-                        <li className="nav-item">
+                        <li className="nav-item mx-2">
                             <NavLink activeClassName="active" className="nav-link" to="/about">About</NavLink>
                         </li>
                         {token.length > 0 &&
                             <>
-                                <li className="nav-item">
+                                <li className="nav-item mx-2">
                                     <NavLink activeClassName="active" className="nav-link" to="/home">Home</NavLink>
                                 </li>
-                                <li className="nav-item">
+                                <li className="nav-item mx-2">
                                     <button onClick={logout} className="btn btn-outline-primary nav-link">Logout</button>
                                 </li>
                             </>}

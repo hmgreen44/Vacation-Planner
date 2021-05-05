@@ -14,7 +14,7 @@ export default function LandingPage(props) {
 
 
     return (
-        <>
+        <div className="text-center">
             <h1>Vacation Planner</h1>
             <p>Allow me to help organize your trip!</p>
             <p>Already a current user? Sign in below</p>
@@ -38,8 +38,8 @@ export default function LandingPage(props) {
                         value={loginData.password || ''}
                         onChange={handleChange} />
                 </div>
-                <button type="submit" className="btn btn-primary mb-3">Login</button>
-                <div className="row text-center mt-3">
+                <button type="submit" className="btn btn-outline-primary mb-3">Login</button>
+                <div className="row mt-3">
                     <div className="col">
                         <p>Don't have an account?</p>
                         <Link to="/registration/">
@@ -48,7 +48,7 @@ export default function LandingPage(props) {
                     </div>
                 </div>
             </form>
-        </>
+        </div>
     )
 
 }

@@ -10,9 +10,7 @@ export const TripHelper = ({ token }) => {
     //Join a current trip
     //leave a current trip
     //add an expense
-    function create(data, e) {
-        console.log(token)
-        e.preventDefault()
+    function create(data) {
         axiosHelper({
             data,
             method: 'post',
@@ -30,7 +28,6 @@ export const TripHelper = ({ token }) => {
 export const TripProvider = (props) => {
 
     const initialContext = TripHelper(props)
-console.log(props)
     return (
         <TripContext.Provider value={initialContext}>
             {props.children}
