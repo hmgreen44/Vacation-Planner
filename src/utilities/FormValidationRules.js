@@ -1,6 +1,6 @@
-export default function validate(formInfo) {
+export default function validate(formInfo, page) {
     let errors = {};
-    if (!formInfo.name) {
+    if (!formInfo.name && page != 'login') {
       errors.name = 'Name is required';
     }
     if (!formInfo.email) {

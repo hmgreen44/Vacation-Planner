@@ -10,7 +10,7 @@ export default function HomePage() {
 
     //Welcome Back User
     return (
-        <div className="landingPage container">
+        <div className="bgImg container">
             <div className="row mt-5">
                 <div className="subText col text-center">
                     <p>Trips you are Organizing</p>

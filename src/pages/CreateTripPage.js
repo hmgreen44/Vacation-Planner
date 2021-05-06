@@ -12,7 +12,7 @@ export default function CreateTripPage() {
         create(tripData)
     }
     return (
-        <div className="container">
+        <div className="bgImg container">
             <div className="row mt-5 text-center">
                 <h1>Start a New Trip</h1>
                 <p>Please fill out the fields provided below</p>

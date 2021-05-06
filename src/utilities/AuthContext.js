@@ -40,7 +40,7 @@ export const AuthHelper = () => {
 
         axiosHelper({
             data: {
-                
+                username: loginData.email,
                 grant_type: "password",
                 client_id: "2",
                 client_secret: "LLYFo06SH0xEobMD83pcSr7p2JbOSAReGIkGqAqF",

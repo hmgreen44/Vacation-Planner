@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const useForm = (callback, validate) => {
+const useForm = (callback, validate, page) => {
 
   const [formInfo, setFormInfo] = useState({});
   const [errors, setErrors] = useState({});
@@ -14,7 +14,7 @@ const useForm = (callback, validate) => {
 
   const handleSubmit = (event) => {
     if (event) event.preventDefault();
-    setErrors(validate(formInfo));
+    setErrors(validate(formInfo, page));
     setIsSubmitting(true);
   };
 

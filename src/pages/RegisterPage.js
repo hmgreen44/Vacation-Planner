@@ -17,7 +17,7 @@ export default function RegisterPage() {
         errors,
         handleChange,
         handleSubmit,
-    } = useForm(API_URL, validate);
+    } = useForm(API_URL, validate, 'register');
 
     function API_URL() {
         console.log('No errors, submit callback called!');
@@ -25,7 +25,7 @@ export default function RegisterPage() {
     }
 
     return (
-        <div className="landingPage container fontColor">
+        <div className="bgImg container fontColor">
             <div className="row text-center mt-5">
                 <div className="col-md-6 offset-md-3">
                     <h1>Create A New Account</h1>

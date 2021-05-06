@@ -16,7 +16,7 @@ export default function LandingPage(props) {
         errors,
         handleChange,
         handleSubmit,
-    } = useForm(API_URL, validate);
+    } = useForm(API_URL, validate, 'login');
 
     function API_URL() {
         console.log('No errors, submit callback called!');
@@ -24,7 +24,7 @@ export default function LandingPage(props) {
     }
 
     return (
-        <div className="landingPage container">
+        <div className="bgImg container">
             <div className="row text-center">
                 <div className="col-md-6 offset-md-3">
                     <img src={Logo} width="150" className="loginLogo" alt="logo" />

@@ -36,7 +36,9 @@ export const TripHelper = ({ token }) => {
     }
 
     useEffect(() => {
-        getTrips()
+        if (token.length > 0) {
+            getTrips()
+        }
     }, [token])
     return { create, myTrips }
 
