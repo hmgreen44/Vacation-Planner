@@ -1,19 +1,31 @@
 import React from 'react'
 import { Link } from "react-router-dom"
-import { useAuth } from '../utilities/AuthContext'
+import { useTrip } from '../utilities/TripContext'
 
 
 
 export default function HomePage() {
-    const { logout } = useAuth()
+    const { myTrips } = useTrip()
+    console.log(myTrips)
 
     //Welcome Back User
     return (
-        <div className="text-center">    
-                    <p>View Your Current Trips</p>
+        <div className="landingPage container">
+            <div className="row mt-5">
+                <div className="subText col text-center">
+                    <p>Trips you are Organizing</p>
+                
                     <p>Oops! Looks like you don't have any trips planned.</p>
                     <Link to="/create">
-                        Create One Now!</Link>          
+                        Create One Now!</Link>
+                </div>
+                <div className="row mt-5">
+                    <div className="subText col text-center">
+                    <p>Trips you are going on</p>
+
+                    </div>
+                </div>
+            </div>
         </div>
 
 

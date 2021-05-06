@@ -1,6 +1,5 @@
-/* .landingPage{
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    background-image: url('../img/Mountains.jpg');
+.landingPage{
+    background-image: url('../img/heroImage.jpg');
     background-size: cover;
     min-width: 100%;
     min-height: 100%;
@@ -9,19 +8,29 @@
     background-position: center;
     
 }
+.fontColor{
+    color: #023736;
+}
 .heroText{
-    color:navy;
-    
+    font-size:60px;
+
+}
+.subText{
+    font-size:25px;
+
 }
 
-.registerPage{
-        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        background-image: url('../img/Mountains.jpg');
-        background-size: cover;
-        min-width: 100%;
-        min-height: 100%;
-        position: fixed;
-        background-repeat: no-repeat;
-        background-position: center;
-        color: white;
-} */
+.logo{
+    height: 50px;
+    border-radius: 50%;
+    margin-top: -115px;
+}
+.loginLogo{
+    width: 250px;
+    height: 250px;
+    margin-bottom:-50px;
+    padding:0;
+
+}
+
+

@@ -10,17 +10,34 @@ export const TripHelper = ({ token }) => {
     //Join a current trip
     //leave a current trip
     //add an expense
+    function saveTrip(res) {
+        setMyTrips(res.data)
+    }
+
     function create(data) {
         axiosHelper({
             data,
             method: 'post',
             url: '/api/trip/create',
-            token
-            // successMethod:
+            token,
+            successMethod: saveTrip
 
         })
 
     }
+
+    function getTrips() {
+        axiosHelper({
+            url: '/api/trips/mine',
+            token,
+            successMethod: saveTrip
+
+        })
+    }
+
+    useEffect(() => {
+        getTrips()
+    }, [token])
     return { create, myTrips }
 
 }

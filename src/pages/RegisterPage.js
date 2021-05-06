@@ -6,70 +6,85 @@ import validate from '../utilities/FormValidationRules'
 
 export default function RegisterPage() {
     const { register } = useAuth()
-    const [registrationData, setRegistrationData] = useState({})
-    const handleChange = e => setRegistrationData(prevState => ({ ...prevState, [e.target.name]: e.target.value }));
-    const handleSubmit = e => {
-        e.preventDefault()
-        register(registrationData)
-    }
+    // const [registrationData, setRegistrationData] = useState({})
+    // const handleSubmit = e => {
+    //     e.preventDefault()
+    //     register(registrationData)
 
-    const Form = e => {
-        register(formInfo)
-    }
+
     const {
         formInfo,
         errors,
-    } = useForm(Form, validate);
+        handleChange,
+        handleSubmit,
+    } = useForm(API_URL, validate);
 
+    function API_URL() {
+        console.log('No errors, submit callback called!');
+        register(formInfo)
+    }
 
     return (
-        <>
-            <h2>Create A New Account</h2>
-            <form onSubmit={handleSubmit} className="needs-validation" noValidate>
-                <div className="input-group mt-3 mb-3">
-                    <input
-                        className={`form-control ${errors.name}`}
-                        name="name"
-                        value={registrationData.name || ''}
-                        type="text"
-                        placeholder="Name"
-                        id="exampleInputName"
-                        onChange={handleChange} required />
-                    <div className="valid-feedback">
-                        Looks good!
-                                        </div>
-                </div>
-                <div className="input-group mt-3 mb-3">
-                    <input
-                        className={`form-control ${errors.email && 'is-danger'}`}
-                        name="email"
-                        type="text"
-                        value={registrationData.email || ''}
-                        placeholder="Email"
-                        id="exampleInputEmail"
-                        onChange={handleChange} required />
-                </div>
-                <div className="input-group mt-3 mb-3">
-                    <input
-                        className={`form-control ${errors.password}`}
-                        name="password"
-                        placeholder="Password"
-                        type="password"
-                        value={registrationData.password || ''}
-                        id="exampleInputPassword"
-                        onChange={handleChange} required />
-                </div>
-                <div id="passwordHelp" className="form-text">Password must be between 8-20 characters.</div>
-                <div className="row text-center mt-3">
-                    <div className="col">
-                        <button type="submit" className="btn btn-outline-primary mb-3">Submit</button>
-                        <p>Already have an account?</p>
-                        <Link to="/">
-                            Login Here</Link>
+        <div className="landingPage container fontColor">
+            <div className="row text-center mt-5">
+                <div className="col-md-6 offset-md-3">
+                    <h1>Create A New Account</h1>
+                    <div className="card p-2 mt-3">
+                        <form onSubmit={handleSubmit} className="needs-validation" noValidate>
+                            <div className="input-group mt-3 mb-3">
+                                <input
+                                    className={`form-control ${formInfo.name && 'is-valid'} ${!!errors.name && 'is-invalid'}`}
+                                    name="name"
+                                    value={formInfo.name || ''}
+                                    type="text"
+                                    placeholder="Name"
+                                    id="exampleInputName"
+                                    onChange={handleChange} required />
+                                <div className="invalid-feedback">
+                                    {errors.name}
+                                </div>
+                            </div>
+                            <div className="input-group mt-3 mb-3">
+                                <input
+                                    className={`form-control ${formInfo.email && 'is-valid'} ${!!errors.email && 'is-invalid'}`}
+                                    name="email"
+                                    type="text"
+                                    value={formInfo.email || ''}
+                                    placeholder="Email"
+                                    id="exampleInputEmail"
+                                    onChange={handleChange} required />
+                                <div className="invalid-feedback">
+                                    {errors.email}
+                                </div>
+                            </div>
+                            <div className="input-group mt-3 mb-3">
+                                <input
+                                    className={`form-control ${formInfo.password && 'is-valid'} ${!!errors.password && 'is-invalid'}`}
+                                    name="password"
+                                    placeholder="Password"
+                                    type="password"
+                                    value={formInfo.password || ''}
+                                    id="exampleInputPassword"
+                                    onChange={handleChange} required />
+                                <div className="invalid-feedback">
+                                    {errors.password}
+                                </div>
+
+                            </div>
+                            <div id="passwordHelp" className="form-text">Password must be between 8-20 characters.</div>
+                            <div className="row text-center mt-3">
+                                <div className="col">
+                                    <button type="submit" className="btn btn-outline-primary mb-3">Submit</button>
+                                    <p>Already have an account?</p>
+                                    <Link to="/">
+                                        Login Here</Link>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </form>
-        </>
+            </div>
+        </div>
     )
 
 }

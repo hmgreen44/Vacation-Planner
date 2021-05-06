@@ -1,12 +1,15 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useAuth } from '../utilities/AuthContext'
+import Logo from '../img/Logo.png';
 function Nav() {
     const { logout, token } = useAuth()
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light p-3">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
-                <NavLink activeClassName="active" className="navbar-brand" to="/">Vacation Planner</NavLink>
+                <NavLink activeClassName="active" className="logo navbar-brand" to="/">
+                <img src={Logo} width="150" className="ms-1" alt="logo"/>
+                </NavLink>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>

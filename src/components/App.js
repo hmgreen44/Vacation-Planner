@@ -1,6 +1,8 @@
 import './App.css';
 import { Router } from 'react-router';
+import LoginPage from '../pages/LoginPage'
 import LandingPage from '../pages/LandingPage'
+import Footer from '../components/Footer'
 import Nav from './Nav'
 import RegisterPage from '../pages/RegisterPage'
 import AboutPage from '../pages/AboutPage'
@@ -15,30 +17,26 @@ export default function App() {
 
 
   return (
-    <Router history={history}>
-      <AuthProvider>
-        <Nav />
-        <div className="App container-fluid">
-          <div className="row mt-5 pt-4">
-            <div className="col-md-8 mt-5 offset-md-2">
-              <div className="card p-5">  
-                  <Authorized /> 
-                <Switch>
-                  <Route exact={true} path="/">
-                    <LandingPage />
-                    </Route>
-                    <Route path="/about">
-                      <AboutPage />
-                  </Route>
-                  <Route path="/registration">
-                    <RegisterPage />
-                  </Route>
-                </Switch>
-              </div>
-            </div>
-          </div>
-        </div>
-      </AuthProvider>
-    </Router>
+      <Router history={history}>
+        <AuthProvider>
+          <Nav />
+          <Footer />
+          <Authorized />
+          <Switch>
+            <Route exact={true} path="/">
+              <LandingPage />
+            </Route>
+            <Route path="/login">
+              <LoginPage />
+            </Route>
+            <Route path="/about">
+              <AboutPage />
+            </Route>
+            <Route path="/registration">
+              <RegisterPage />
+            </Route>
+          </Switch>
+        </AuthProvider>
+      </Router>
   );
 }
