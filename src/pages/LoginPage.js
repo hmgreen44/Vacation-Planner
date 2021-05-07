@@ -24,7 +24,7 @@ export default function LandingPage(props) {
     }
 
     return (
-        <div className="bgImg container">
+        <div className="imgStatic container">
             <div className="row text-center">
                 <div className="col-md-6 offset-md-3">
                     <img src={Logo} width="150" className="loginLogo" alt="logo" />

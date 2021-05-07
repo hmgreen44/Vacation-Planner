@@ -17,12 +17,13 @@ export default function CreateTripPage() {
                 <h1>Start a New Trip</h1>
                 <p>Please fill out the fields provided below</p>
                 <div className="col-md-6 offset-md-3">
-                    <div className="card p-2 mt-3">
+                    <div className="card p-2 mt-3 mb-2">
                         <form onSubmit={handleSubmit}>
                             <div className="row">
                                 <div className="col">
                                     <label htmlFor="name" className="form-label">Trip Name</label>
                                     <input
+                                        name='name'
                                         onChange={handleChange}
                                         type="text"
                                         className="form-control"

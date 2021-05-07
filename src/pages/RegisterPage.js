@@ -25,7 +25,7 @@ export default function RegisterPage() {
     }
 
     return (
-        <div className="bgImg container fontColor">
+        <div className="imgStatic container fontColor">
             <div className="row text-center mt-5">
                 <div className="col-md-6 offset-md-3">
                     <h1>Create A New Account</h1>
@@ -76,7 +76,7 @@ export default function RegisterPage() {
                                 <div className="col">
                                     <button type="submit" className="btn btn-outline-primary mb-3">Submit</button>
                                     <p>Already have an account?</p>
-                                    <Link to="/">
+                                    <Link to="/login">
                                         Login Here</Link>
                                 </div>
                             </div>

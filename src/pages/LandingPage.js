@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 export default function LandingPage() {
     return (
-        <div className="bgImg container">
+        <div className="imgStatic container">
             <div className="row">
                 <div className="heroText text-center mt-5">
                     <br>

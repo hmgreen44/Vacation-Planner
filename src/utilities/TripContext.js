@@ -12,6 +12,7 @@ export const TripHelper = ({ token }) => {
     //add an expense
     function saveTrip(res) {
         setMyTrips(res.data)
+        history.push("/home")
     }
 
     function create(data) {
