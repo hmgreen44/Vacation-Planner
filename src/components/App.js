@@ -12,11 +12,13 @@ import history from "../utilities/history";
 import {
   Switch,
   Route,
+  Redirect
 } from 'react-router-dom'
 export default function App() {
 
 
   return (
+    <div className="App">
       <Router history={history}>
         <AuthProvider>
           <Nav />
@@ -38,5 +40,6 @@ export default function App() {
           </Switch>
         </AuthProvider>
       </Router>
+    </div>
   );
 }

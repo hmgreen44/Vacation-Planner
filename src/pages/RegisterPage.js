@@ -27,9 +27,9 @@ export default function RegisterPage() {
     return (
         <div className="imgStatic container fontColor">
             <div className="row text-center mt-5">
-                <div className="col-md-6 offset-md-3">
+                <div className="col-md-6 offset-md-3 mt-5">
                     <h1>Create A New Account</h1>
-                    <div className="card p-2 mt-3">
+                    <div className="special p-2 mt-3">
                         <form onSubmit={handleSubmit} className="needs-validation" noValidate>
                             <div className="input-group mt-3 mb-3">
                                 <input
@@ -71,12 +71,12 @@ export default function RegisterPage() {
                                 </div>
 
                             </div>
-                            <div id="passwordHelp" className="form-text">Password must be between 8-20 characters.</div>
+                            <div id="passwordHelp" className="text">Password must be between 8-20 characters.</div>
                             <div className="row text-center mt-3">
                                 <div className="col">
-                                    <button type="submit" className="btn btn-outline-primary mb-3">Submit</button>
+                                    <button type="submit" className="btn btn-primary mb-3">Submit</button>
                                     <p>Already have an account?</p>
-                                    <Link to="/login">
+                                    <Link className="btn btn-primary mb-2" to="/login">
                                         Login Here</Link>
                                 </div>
                             </div>

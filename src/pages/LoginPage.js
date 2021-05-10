@@ -29,7 +29,7 @@ export default function LandingPage(props) {
                 <div className="col-md-6 offset-md-3">
                     <img src={Logo} width="150" className="loginLogo" alt="logo" />
                     <p>Already a current user? Sign in below</p>
-                    <div className="special card p-2">
+                    <div className="special p-2">
                         <form onSubmit={handleSubmit}>
                             <div className="input-group mt-3 mb-3">
                                 <input
@@ -53,11 +53,11 @@ export default function LandingPage(props) {
                                     value={formInfo.password || ''}
                                     onChange={handleChange} />
                             </div>
-                            <button type="submit" className="btn btn-outline-primary mb-3">Login</button>
+                            <button type="submit" className="btn btn-primary mb-3">Login</button>
                             <div className="row mt-2">
                                 <div className="col">
                                     <p>Don't have an account?</p>
-                                    <Link to="/registration/">
+                                    <Link className="btn btn-primary mb-2" to="/registration/">
                                         Register Here</Link>
                                 </div>
                             </div>

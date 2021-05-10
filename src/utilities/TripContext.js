@@ -4,14 +4,19 @@ import history from "./history";
 const TripContext = createContext({});
 
 export const TripHelper = ({ token }) => {
-    const [myTrips, setMyTrips] = useState([])
+    const [myOrganizerTrips, setMyOrganizerTrips] = useState([])
+    const [myAttendeeTrips, setMyAttendeeTrips] = useState([])
     //Get all of my trips
     //Create a new trip
     //Join a current trip
     //leave a current trip
     //add an expense
-    function saveTrip(res) {
-        setMyTrips(res.data)
+    function saveOrganizerTrips(res) {
+        setMyOrganizerTrips(res.data)
+        history.push("/home")
+    }
+    function saveAttendeeTrips(res) {
+        setMyAttendeeTrips(res.data)
         history.push("/home")
     }
 
@@ -21,27 +26,48 @@ export const TripHelper = ({ token }) => {
             method: 'post',
             url: '/api/trip/create',
             token,
-            successMethod: saveTrip
+            successMethod: saveOrganizerTrips
 
         })
 
     }
-
-    function getTrips() {
+    function join(trip_token) {
         axiosHelper({
-            url: '/api/trips/mine',
+            data:{trip_token},
+            method: 'post',
+            url: '/api/trip/adduser',
             token,
-            successMethod: saveTrip
+            successMethod: getAttendeeTrips
+        })
+
+    }
+
+    function getOrganizerTrips() {
+        axiosHelper({
+            url: '/api/trips/organizer',
+            token,
+            successMethod: saveOrganizerTrips
+
+        })
+    }
+
+    function getAttendeeTrips(res) {
+        console.log(res)
+        axiosHelper({
+            url: '/api/trips/attendee',
+            token,
+            successMethod: saveAttendeeTrips
 
         })
     }
 
     useEffect(() => {
         if (token.length > 0) {
-            getTrips()
+            getOrganizerTrips()
+            getAttendeeTrips()
         }
     }, [token])
-    return { create, myTrips }
+    return { myOrganizerTrips, myAttendeeTrips, create, join }
 
 }
 

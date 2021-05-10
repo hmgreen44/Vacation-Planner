@@ -6,6 +6,7 @@ const AuthContext = createContext({});
 export const AuthHelper = () => {
 
     const [token, setToken] = useState('')
+    const [userData, setUserData] = useState({})
 
     useEffect(() => {
         let lsToken = window.localStorage.getItem('token')
@@ -15,6 +16,19 @@ export const AuthHelper = () => {
         }
 
     }, [])
+
+    useEffect(() => {
+        if (token.length > 0) {
+            getUserData()
+        }
+
+    }, [token])
+
+
+    function saveUserData(res) {
+        setUserData(prev => res.data);
+
+    }
 
     function saveToken(res) {
         console.log(res) // Check response
@@ -32,6 +46,7 @@ export const AuthHelper = () => {
 
     function destroyToken() {
         setToken('')
+        setUserData(prev => ({}))
         window.localStorage.removeItem('token')
         history.replace('/')
 
@@ -43,7 +58,7 @@ export const AuthHelper = () => {
                 username: loginData.email,
                 grant_type: "password",
                 client_id: "2",
-                client_secret: "LLYFo06SH0xEobMD83pcSr7p2JbOSAReGIkGqAqF",
+                client_secret: "9oym5oNDQWkNetuV4V4M8j80GdX9vyZuMuTGvrN4",
                 ...loginData
             },
             method: 'post',
@@ -72,9 +87,16 @@ export const AuthHelper = () => {
         })
 
     }
+    function getUserData(){
+        axiosHelper({
+            url: '/api/user',
+            successMethod: saveUserData,
+            token
+        })
+    }
 
 
-    return { token, register, login, logout }
+    return { token, userData, register, login, logout }
 
 }
 
