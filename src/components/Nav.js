@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { useAuth } from '../utilities/AuthContext'
 import Logo from '../img/Logo.png';
 function Nav() {
-    const { logout, token } = useAuth()
+    const { logout, token, login } = useAuth()
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
@@ -18,6 +18,15 @@ function Nav() {
                         <li className="nav-item mx-2">
                             <NavLink activeClassName="active" className="nav-link" to="/about">About</NavLink>
                         </li>
+                        {token.length == 0 &&
+                        <>
+                        <li className="nav-item mx-2">
+                            <NavLink activeClassName="active" className="nav-link" to="/login">Login</NavLink>
+                        </li>
+                        <li className="nav-item mx-2">
+                            <NavLink activeClassName="active" className="nav-link" to="/registration">Register</NavLink>
+                        </li>
+                        </>}
                         {token.length > 0 &&
                             <>
                                 <li className="nav-item mx-2">

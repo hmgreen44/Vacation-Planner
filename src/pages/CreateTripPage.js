@@ -11,6 +11,37 @@ export default function CreateTripPage() {
         e.preventDefault()
         create(tripData)
     }
+
+    function startDate() {
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+        var yyyy = today.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd
+        }
+        if (mm < 10) {
+            mm = '0' + mm
+        }
+        return `${yyyy}-${mm}-${dd}`
+    }
+    function endDate() {
+        const today = startDate()
+        const sd = tripData.start_date || ''
+        if (sd.length > 0) {
+            return sd
+        }
+        return today;
+    }
+    function startDateMax() {
+        const ed = tripData.end_date || ''
+        const future = '2122-12-31'
+        if (ed.length > 0) {
+            return ed
+        }
+        return future;
+    }
+
     return (
         <div className="bgImg container">
             <div className="row mt-5 text-center">
@@ -56,7 +87,7 @@ export default function CreateTripPage() {
                                     <input
                                         type="date"
                                         name="start_date"
-                                        min="2021-05-01" max="2022-12-31"
+                                        min={startDate()} max={startDateMax()}
                                         onChange={handleChange}
                                         value={tripData.start_date || ''}
                                         className="form-control"
@@ -67,7 +98,7 @@ export default function CreateTripPage() {
                                     <input
                                         type="date"
                                         name="end_date"
-                                        min="2021-05-01" max="2022-12-31"
+                                        min={endDate()} max="2122-12-31"
                                         value={tripData.end_date || ''}
                                         onChange={handleChange}
                                         className="form-control"
@@ -76,20 +107,14 @@ export default function CreateTripPage() {
                             </div>
                             <div className="row">
                                 <div className="col mt-4">
-                                {/* <p>Manage Expenses</p>
-                                    <div className="input-group">
-                                        <input type="text" className="form-control" aria-label="Dollar amount (with dot and two decimal places)" />
-                                        <span className="input-group-text">$</span>
-                                        <span className="input-group-text">0.00</span>
-                                    </div>
-                                    <div className="col"> */}
-                                        <button type="submit" className="btn btn-outline-primary mt-3">Submit</button>
-                                        <div className="col mt-3">
-                                            <Link to="/home">
-                                                Back To HomePage</Link>
-                                        </div>
+                                   
+                                    <button type="submit" className="btn btn-primary mt-3">Submit</button>
+                                    <div className="col mt-5 mb-2">
+                                        <Link to="/home">
+                                            Back To HomePage</Link>
                                     </div>
                                 </div>
+                            </div>
                             {/* </div> */}
                         </form>
                     </div>
