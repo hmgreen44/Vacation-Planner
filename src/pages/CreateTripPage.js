@@ -62,7 +62,7 @@ export default function CreateTripPage() {
                                 </div>
                             </div>
                             <div className="row mt-3">
-                                <div className="col-7">
+                                <div className="col-6">
                                     <label htmlFor="City" className="form-label">City</label>
                                     <input
                                         name='city'
@@ -72,7 +72,7 @@ export default function CreateTripPage() {
                                         value={tripData.city || ''}
                                         id="city" />
                                 </div>
-                                <div className="col-5">
+                                <div className="col-6">
                                     <label htmlFor="State" className="form-label">State</label>
                                     <input
                                         name='state'

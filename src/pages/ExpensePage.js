@@ -19,7 +19,6 @@ export default function ExpensePage() {
                 id: Date.now(),
                 isNew: true
             }
-
             expenseCopy.push(expense)
             return expenseCopy
         })
@@ -35,7 +34,7 @@ export default function ExpensePage() {
     function deleteExpense(id, e) {
         setExpenses(previousExpenses => previousExpenses.filter(expense => expense.id !== id))
     }
-    function handleExpenseSubmit(e) {
+    function submitExpense(e) {
         console.log('submitting expenses')
         // create expense
         setExpenses(previousExpenses => previousExpenses.map(expense => {
@@ -50,6 +49,7 @@ export default function ExpensePage() {
         return (
             <Expense key={index} expense={expense} editExpense={editExpense} deleteExpense={deleteExpense} />
         )
+
     })
 
     return (
@@ -62,7 +62,7 @@ export default function ExpensePage() {
                             <button className="btn btn-outline-primary" onClick={createExpense}>Create a new expense</button>
                             {mappedExpenses}
                             <div className="col mt-4">
-                                <button onClick={handleExpenseSubmit} className="btn btn-outline-primary mt-3">Add Expenses</button>
+                                <button onClick={submitExpense} className="btn btn-outline-primary mt-3">Add Expenses</button>
                             </div>
                             <div className="row mb-2">
                                 <div className="col mt-4">

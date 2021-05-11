@@ -42,7 +42,7 @@ export default function TripPage() {
                                     </div>
                                     <div className="row mt-4 ms-1">
                                         <div className="col">
-                                            <Link className="btn btn-outline-primary" to="/home">
+                                            <Link className="btn btn-primary" to="/home">
                                                 Back To HomePage</Link>
                                         </div>
                                     </div>

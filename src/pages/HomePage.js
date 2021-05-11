@@ -20,6 +20,7 @@ export default function HomePage() {
                             <p className="card-text">{trip.city}, {trip.state}</p>
                             <Link to={`/trip/${trip.trip_token}`} className="btn btn-primary">More Info</Link> {" "}
                         {trip.organizer === userData.id && <button type="button" className="btn btn-success">Edit</button>}
+                        
                         </div>
                     </div>
                 </div>

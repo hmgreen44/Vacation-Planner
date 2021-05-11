@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import { axiosHelper } from './axiosHelper'
 import history from "./history";
+
 const TripContext = createContext({});
 
 export const TripHelper = ({ token }) => {
