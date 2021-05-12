@@ -16,7 +16,8 @@ export function useForceUpdate() {
 
 export const TripHelper = ({ token }) => {
     const [myOrganizerTrips, setMyOrganizerTrips] = useState([])
-    const [myAttendeeTrips, setMyAttendeeTrips] = useState([])
+    // const [myAttendeeTrips, setMyAttendeeTrips] = useState([])
+    const [myAttendeeTrips, setMyAttendeeTrips] = useState("[]")
     const forceUpdate = useForceUpdate();
 
     //Get all of my trips
@@ -30,20 +31,20 @@ export const TripHelper = ({ token }) => {
         console.log(res.data)
         getAttendeeTrips()
     }
+    function updateAttendeeTrips(res) {
+        setMyAttendeeTrips(prevTrips => {
+            return JSON.stringify(res.data)
+        })
+    }
     function saveAttendeeTrips(res) {
-        setMyAttendeeTrips(prevTrips => res.data)
+        updateAttendeeTrips(res)
         history.push("/home")
     }
     function updateTripExpenses(res) {
-        setMyAttendeeTrips(prevTrips => {
-            console.log({ prevTrips, res: res.data })
-
-            return res.data
-        })
-        forceUpdate();
+        updateAttendeeTrips(res)
     }
     function saveExpense(res) {
-        setMyAttendeeTrips(prevTrips => res.data)
+        updateAttendeeTrips(res)
         history.goBack()
     }
     function create(data) {

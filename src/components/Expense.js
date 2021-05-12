@@ -5,9 +5,8 @@ export default function Expense(props) {
     const handleDelete = e => props.deleteExpense(props.expense.id, e)
 
     return (
-        <div className="row p-3">
+        <div className="row p-3 mt-4">
             <div className="input-group mb-1">
-                
                     <input
                         onChange={handleChange}
                         type="text"

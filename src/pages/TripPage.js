@@ -7,9 +7,9 @@ import { TripProvider } from '../utilities/TripContext'
 export default function TripPage() {
     const { myOrganizerTrips, myAttendeeTrips, deleteExpense } = useTrip()
     const { tripToken } = useParams()
-    const myTrips = [...myOrganizerTrips, ...myAttendeeTrips]
+    const myTrips = [...myOrganizerTrips, ...JSON.parse(myAttendeeTrips)]
     //sort my trips by criteria newest, upcoming, organizing, attending
-    const foundTrip = myTrips.find(trip => trip.trip_token == tripToken)
+    const foundTrip = JSON.parse(myAttendeeTrips).find(trip => trip.trip_token == tripToken)
     let startDate = new Date(foundTrip.start_date).toLocaleDateString("en-US", { month: 'long', year: 'numeric', day: 'numeric' })
     let endDate = new Date(foundTrip.end_date).toLocaleDateString("en-US", { month: 'long', year: 'numeric', day: 'numeric' })
 
@@ -52,14 +52,14 @@ export default function TripPage() {
                         <h5>From: {startDate}</h5>
                         <h5>To: {endDate}</h5>
                         <div className="row">
-                            <div className="col">
+                            <div className="col mx-5">
                                 <h2>Manage Expenses</h2>
                                 {mappedExpenses}
                                 <Link className="btn btn-primary mt-1" to={`/expense/${foundTrip.id}`}>
                                     Add Expense</Link>
                                 <div className="row mt-3">
                                     <h5>Share this token to invite friends!</h5>
-                                    <div className="col text-center mx-5">
+                                    <div className="col text-center mx-3">
                                         <input type="text"
                                             className="form-control"
                                             defaultValue={foundTrip.trip_token}
