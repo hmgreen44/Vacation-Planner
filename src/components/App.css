@@ -1,0 +1,57 @@
+.App{
+   
+    background-image: url('../img/heroImage.jpg');
+    background-size: cover;
+    min-width: 100%;
+    min-height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    
+        
+}
+.fontColor{
+    color: #023736;
+}
+.heroText{
+    font-size:60px;
+
+}
+.subText{
+    font-size:25px;
+
+}
+.logo{
+    height: 50px;
+    border-radius: 50%;
+    margin-top: -115px;
+}
+.loginLogo{
+    width: 250px;
+    height: 250px;
+    margin-bottom:-50px;
+    padding:0;
+}
+/* .about{
+    background-color: #ffc9c4;
+    background-size: cover;
+    min-width: 100%;
+    min-height: 100%;
+    position: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+} */
+.card-img-top {
+    width: 100%;
+    height: 20vw;
+    object-fit: cover;
+}
+.navBar{
+position: fixed;
+  top: 0;
+  width: 100%;
+}
+.special{
+    background-color: rgba(221, 221, 221, 0.562);
+    
+}
