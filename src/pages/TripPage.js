@@ -11,10 +11,9 @@ export default function TripPage() {
     const myTrips = [...myOrganizerTrips, ...myAttendeeTrips]
     //sort my trips by criteria newest, upcoming, organizing, attending
     const foundTrip = myTrips.find(trip => trip.trip_token == tripToken)
-    console.log(foundTrip)
     let startDate = new Date(foundTrip.start_date).toLocaleDateString("en-US", { month: 'long', year: 'numeric', day: 'numeric' })
     let endDate = new Date(foundTrip.end_date).toLocaleDateString("en-US", { month: 'long', year: 'numeric', day: 'numeric' })
-
+    console.log(foundTrip.id)
     
     return (
 
@@ -30,7 +29,7 @@ export default function TripPage() {
                             <div className="col">
                                 <h2>Manage Expenses</h2>
                                 <p>Current total cost:</p>
-                                <Link className="btn btn-primary mt-1" to="/expense">
+                                <Link trip_id={foundTrip.id} className="btn btn-primary mt-1" to="/expense">
                                     Add Expense</Link>
                                 <div className="row mt-3">
                                     <h5>Share this token to invite friends!</h5>

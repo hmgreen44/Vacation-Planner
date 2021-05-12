@@ -25,7 +25,6 @@ export default function Expense(props) {
                         value={props.expense.cost || ''}
                         placeholder="0.00" />
                     <button className="btn btn-outline-danger" onClick={handleDelete} id="button-addon2">Delete</button>
-                
             </div>
         </div>
 

@@ -7,17 +7,18 @@ import history from "../utilities/history";
 export default function ExpensePage() {
     const [expenses, setExpenses] = useState([])
     const { addExpense } = useTrip()
-    
-    
+
+
     function createExpense() {
-        console.log("creating a new expense")
+        //const foundTrip = myTrips.find(trip => trip.trip_token == tripToken)
         setExpenses(previousExpenses => {
             let expenseCopy = [...previousExpenses]
             const expense = {
                 name: '',
                 cost: 0,
                 id: Date.now(),
-                isNew: true
+                isNew: true,
+                //trip_id: foundTrip.id
             }
             expenseCopy.push(expense)
             return expenseCopy
@@ -35,7 +36,6 @@ export default function ExpensePage() {
         setExpenses(previousExpenses => previousExpenses.filter(expense => expense.id !== id))
     }
     function submitExpense(e) {
-        console.log('submitting expenses')
         // create expense
         setExpenses(previousExpenses => previousExpenses.map(expense => {
             if (expense.isNew) {

@@ -8,6 +8,7 @@ export const TripHelper = ({ token }) => {
     const [myOrganizerTrips, setMyOrganizerTrips] = useState([])
     const [myAttendeeTrips, setMyAttendeeTrips] = useState([])
     const [myExpenses, setMyExpenses] = useState([])
+    
     //Get all of my trips
     //Create a new trip
     //Join a current trip
