@@ -58,7 +58,7 @@ export const AuthHelper = () => {
                 username: loginData.email,
                 grant_type: "password",
                 client_id: "2",
-                client_secret: "GhnCklCaO53n8Ds0woQBDAflG7URWvwbeWDpQWnU",
+                client_secret: "nVZpP0L0jApFpTdG18mtVwVaRP9DA9f9nk26CCZa",
                 ...loginData
             },
             method: 'post',
