@@ -23,7 +23,7 @@ export default function Authorized() {
                 <Route path="/trip/:tripToken">
                     {token.length > 0 ? <TripPage /> : <Redirect to="/login" />}
                 </Route>
-                <Route path="/expense/">
+                <Route path="/expense/:trip_id">
                     {token.length > 0 ? <Expense /> : <Redirect to="/login" />}
                 </Route>
                 <Route path="/join/">

@@ -1,14 +1,24 @@
-import React, { createContext, useState, useEffect, useContext } from "react";
+import React, { createContext, useState, useEffect, useContext, useCallback } from "react";
 import { axiosHelper } from './axiosHelper'
 import history from "./history";
 
 const TripContext = createContext({});
 
+
+export function useForceUpdate() {
+    const [, setTick] = useState(0);
+    const update = useCallback(() => {
+        setTick(tick => tick + 1);
+    }, [])
+    return update;
+}
+
+
 export const TripHelper = ({ token }) => {
     const [myOrganizerTrips, setMyOrganizerTrips] = useState([])
     const [myAttendeeTrips, setMyAttendeeTrips] = useState([])
-    const [myExpenses, setMyExpenses] = useState([])
-    
+    const forceUpdate = useForceUpdate();
+
     //Get all of my trips
     //Create a new trip
     //Join a current trip
@@ -24,11 +34,18 @@ export const TripHelper = ({ token }) => {
         setMyAttendeeTrips(prevTrips => res.data)
         history.push("/home")
     }
-    function saveExpense(res){
-        setMyExpenses(prevExpense => res.data)
+    function updateTripExpenses(res) {
+        setMyAttendeeTrips(prevTrips => {
+            console.log({ prevTrips, res: res.data })
+
+            return res.data
+        })
+        forceUpdate();
+    }
+    function saveExpense(res) {
+        setMyAttendeeTrips(prevTrips => res.data)
         history.goBack()
     }
-
     function create(data) {
         axiosHelper({
             data,
@@ -42,7 +59,7 @@ export const TripHelper = ({ token }) => {
     }
     function join(trip_token) {
         axiosHelper({
-            data:{trip_token},
+            data: { trip_token },
             method: 'post',
             url: '/api/trip/adduser',
             token,
@@ -50,7 +67,6 @@ export const TripHelper = ({ token }) => {
         })
 
     }
-
     function getOrganizerTrips() {
         axiosHelper({
             url: '/api/trips/organizer',
@@ -59,9 +75,7 @@ export const TripHelper = ({ token }) => {
 
         })
     }
-
-    function getAttendeeTrips(res) {
-        console.log(res)
+    function getAttendeeTrips() {
         axiosHelper({
             url: '/api/trips/attendee',
             token,
@@ -69,11 +83,19 @@ export const TripHelper = ({ token }) => {
 
         })
     }
-    function addExpense(data){
+    function deleteExpense(expense_id) {
+        axiosHelper({
+            url: '/api/expense/destroy/' + expense_id,
+            token,
+            successMethod: updateTripExpenses
+        })
+    }
+    function addExpenses(data) {
+        console.log(data)
         axiosHelper({
             data,
             method: 'post',
-            url: '/api/expenses/addexpense',
+            url: '/api/expenses/addexpenses',
             token,
             successMethod: saveExpense
         })
@@ -85,7 +107,8 @@ export const TripHelper = ({ token }) => {
             getAttendeeTrips()
         }
     }, [token])
-    return { myOrganizerTrips, myAttendeeTrips, create, join, addExpense }
+
+    return { myOrganizerTrips, myAttendeeTrips, create, join, addExpenses, deleteExpense }
 
 }
 

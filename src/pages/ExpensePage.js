@@ -2,11 +2,13 @@ import React, { useState } from "react"
 import { useTrip } from '../utilities/TripContext'
 import Expense from '../components/Expense'
 import history from "../utilities/history";
+import { useParams } from 'react-router-dom'
 
 
 export default function ExpensePage() {
+    const {trip_id} = useParams()
     const [expenses, setExpenses] = useState([])
-    const { addExpense } = useTrip()
+    const { addExpenses } = useTrip()
 
 
     function createExpense() {
@@ -36,14 +38,17 @@ export default function ExpensePage() {
         setExpenses(previousExpenses => previousExpenses.filter(expense => expense.id !== id))
     }
     function submitExpense(e) {
+
         // create expense
-        setExpenses(previousExpenses => previousExpenses.map(expense => {
-            if (expense.isNew) {
-                expense = { ...expense, [e.target.name]: e.target.value }
-            }
-            return expense
-        }))
-        addExpense(expenses);
+        // setExpenses(previousExpenses => previousExpenses.map(expense => {
+        //     if (expense.isNew) {
+        //         expense = { ...expense, [e.target.name]: e.target.value }
+        //     }
+        //     return expense
+        // }))
+        const data = {expenses, trip_id}
+        addExpenses(data);
+
     }
     const mappedExpenses = expenses.map((expense, index) => {
         return (

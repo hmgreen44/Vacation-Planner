@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import { useTrip } from '../utilities/TripContext'
 export default function Expense(props) {
-
     const handleChange = e => props.editExpense(props.expense.id, e)
     const handleDelete = e => props.deleteExpense(props.expense.id, e)
 
     return (
-        <div className="row p-3 mt-4">
+        <div className="row p-3">
             <div className="input-group mb-1">
                 
                     <input

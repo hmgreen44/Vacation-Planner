@@ -1,20 +1,46 @@
 import React from 'react'
 import { useTrip } from '../utilities/TripContext'
-import { useParams } from 'react-router-dom'
-import { Link } from "react-router-dom"
+import { useParams, Link } from 'react-router-dom'
 import { TripProvider } from '../utilities/TripContext'
 
 
 export default function TripPage() {
-    const { myOrganizerTrips, myAttendeeTrips } = useTrip()
+    const { myOrganizerTrips, myAttendeeTrips, deleteExpense } = useTrip()
     const { tripToken } = useParams()
     const myTrips = [...myOrganizerTrips, ...myAttendeeTrips]
     //sort my trips by criteria newest, upcoming, organizing, attending
     const foundTrip = myTrips.find(trip => trip.trip_token == tripToken)
     let startDate = new Date(foundTrip.start_date).toLocaleDateString("en-US", { month: 'long', year: 'numeric', day: 'numeric' })
     let endDate = new Date(foundTrip.end_date).toLocaleDateString("en-US", { month: 'long', year: 'numeric', day: 'numeric' })
-    console.log(foundTrip.id)
-    
+
+    const mappedExpenses = foundTrip.expenses.map((expense, index) => {
+        return (
+            <div className="row p-3 mt-4" key={index}>
+                <div className="input-group mb-1">
+                    <input
+
+                        type="text"
+                        className="form-control"
+                        placeholder="Name"
+                        value={expense.name}
+                        name="name" disabled />
+                    <span className="input-group-text">$</span>
+                    <input
+
+                        name="cost"
+                        type="number"
+                        className="form-control"
+                        value={expense.cost}
+                        placeholder="0.00" disabled />
+                    <button
+                        className="btn btn-outline-danger"
+                        onClick={() => deleteExpense(expense.id)}
+                        id="button-addon2">Delete</button>
+                </div>
+            </div>
+
+        )
+    })
     return (
 
         <div className="about container">
@@ -28,16 +54,16 @@ export default function TripPage() {
                         <div className="row">
                             <div className="col">
                                 <h2>Manage Expenses</h2>
-                                <p>Current total cost:</p>
-                                <Link trip_id={foundTrip.id} className="btn btn-primary mt-1" to="/expense">
+                                {mappedExpenses}
+                                <Link className="btn btn-primary mt-1" to={`/expense/${foundTrip.id}`}>
                                     Add Expense</Link>
                                 <div className="row mt-3">
                                     <h5>Share this token to invite friends!</h5>
                                     <div className="col text-center mx-5">
                                         <input type="text"
-                                        className="form-control" 
-                                        defaultValue={foundTrip.trip_token} 
-                                        id="myInput" />
+                                            className="form-control"
+                                            defaultValue={foundTrip.trip_token}
+                                            id="myInput" />
                                     </div>
                                     <div className="row mt-4 ms-1">
                                         <div className="col">
